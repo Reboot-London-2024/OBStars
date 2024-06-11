@@ -73,13 +73,86 @@
     .navigation button:hover {
       background-color: #555;
     }
+
+    /* Modal styles */
+    .modal {
+      display: none; 
+      position: fixed; 
+      z-index: 1; 
+      left: 0;
+      top: 0;
+      width: 100%; 
+      height: 100%; 
+      overflow: auto; 
+      background-color: rgba(0, 0, 0, 0.4); 
+    }
+    .modal-content {
+      background-color: #fff;
+      margin: 15% auto; 
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%; 
+      max-width: 500px; 
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .stars {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 15px;
+    }
+    .stars input {
+      display: none;
+    }
+    .stars label {
+      font-size: 30px;
+      color: #ddd;
+      cursor: pointer;
+    }
+    .stars label:hover,
+    .stars label:hover ~ label,
+    .stars input:checked ~ label {
+      color: #ffc107;
+    }
+    .comments {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    .feedback-btn {
+      background-color: #333;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .feedback-btn:hover {
+      background-color: #555;
+    }
   </style>
 </head>
 <body>
 
 <div class="container">
   <div class="video-thumbnail">
-    <img src="charlie-nunn-watermarked.jpg" alt="Video Thumbnail">
+    <img src="charlie-nunn-watermarked.jpg" alt="Video Thumbnail of CEO Charlie Nunn's Speech">
   </div>
   <h1>Pre-Onboarding (Colleague)</h1>
   
@@ -107,9 +180,51 @@
 
   <div class="navigation">
     <button type="button" onclick="window.location.href='document-check.html'">Previous</button>
-    <button type="button" onclick="window.location.href='onboarding-dashboard.html'">Submit</button>
+    <button type="button" onclick="checkAllCheckboxes()">Submit</button>
   </div>
 </div>
+
+<!-- Feedback Modal -->
+<div id="feedbackModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeFeedbackModal()">&times;</span>
+    <h2>Feedback</h2>
+    <div class="stars">
+      <input type="radio" id="star5" name="rating" value="5"><label for="star5">&#9733;</label>
+      <input type="radio" id="star4" name="rating" value="4"><label for="star4">&#9733;</label>
+      <input type="radio" id="star3" name="rating" value="3"><label for="star3">&#9733;</label>
+      <input type="radio" id="star2" name="rating" value="2"><label for="star2">&#9733;</label>
+      <input type="radio" id="star1" name="rating" value="1"><label for="star1">&#9733;</label>
+    </div>
+    <textarea class="comments" placeholder="Add your comments here..."></textarea>
+    <button class="feedback-btn" onclick="submitFeedback()">Submit</button>
+  </div>
+</div>
+
+<script>
+  function checkAllCheckboxes() {
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    const allChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
+    if (allChecked) {
+      showFeedbackModal();
+    } else {
+      alert('Please complete all tasks before submitting.');
+    }
+  }
+
+  function showFeedbackModal() {
+    document.getElementById('feedbackModal').style.display = 'block';
+  }
+
+  function closeFeedbackModal() {
+    document.getElementById('feedbackModal').style.display = 'none';
+  }
+
+  function submitFeedback() {
+    // You can add feedback submission logic here
+    window.location.href = 'onboarding-dashboard.html';
+  }
+</script>
 
 </body>
 </html>
