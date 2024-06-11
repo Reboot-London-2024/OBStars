@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Onboarding Assistant</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="checklist.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Onboarding Assistant</h2>
+    <div id="chat-box">
+      <div id="chat-log"></div>
+      <input type="text" id="user-input" placeholder="Type your message here...">
+      <button id="send-button">Send</button>
+    </div>
+    <ul class="checklist">
+      <li>
+        <input type="checkbox" id="admin-access" name="admin_access">
+        <label for="admin-access">Requested Admin Access</label>
+      </li>
+      <li>
+        <input type="checkbox" id="python-installed" name="python_installed">
+        <label for="python-installed">Installed Python</label>
+      </li>
+      <li>
+        <input type="checkbox" id="code-of-conduct" name="code_of_conduct">
+        <label for="code-of-conduct">Reviewed Code of Conduct</label>
+      </li>
+      <li>
+        <input type="checkbox" id="security-training" name="security_training">
+        <label for="security-training">Completed Security Training</label>
+      </li>
+      <li>
+        <input type="checkbox" id="benefits-reviewed" name="benefits_reviewed">
+        <label for="benefits-reviewed">Reviewed Employee Benefits</label>
+      </li>
+      <li>
+        <input type="checkbox" id="hr-policies" name="hr_policies">
+        <label for="hr-policies">Read HR Policies</label>
+      </li>
+      <li>
+        <input type="checkbox" id="software-setup" name="software_setup">
+        <label for="software-setup">Setup Required Software</label>
+      </li>
+      <li>
+        <input type="checkbox" id="intro-meetings" name="intro_meetings">
+        <label for="intro-meetings">Attended Introductory Meetings</label>
+      </li>
+      <li>
+        <input type="checkbox" id="company-portal" name="company_portal">
+        <label for="company-portal">Familiarized with Company Portal</label>
+      </li>
+      <li>
+        <input type="checkbox" id="project-management" name="project_management">
+        <label for="project-management">Completed Project Management Training</label>
+      </li>
+    </ul>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+  <script>
+    $(document).ready(function() {
+      const dialogflowMessenger = document.createElement('df-messenger');
+      dialogflowMessenger.setAttribute('intent', 'WELCOME');
+      dialogflowMessenger.setAttribute('chat-title', 'Onboarding Assistant');
+      dialogflowMessenger.setAttribute('agent-id', 'YOUR_DIALOGFLOW_AGENT_ID');
+      dialogflowMessenger.setAttribute('language-code', 'en');
+      document.body.appendChild(dialogflowMessenger);
+
+      $('#send-button').click(function() {
+        const userInput = $('#user-input').val();
+        if (userInput.trim() !== '') {
+          $('#chat-log').append('<div class="user-message">' + userInput + '</div>');
+          $('#user-input').val('');
+          
+          // Integrate Google Cloud Natural Language API here if needed
+          // Send the user input to Dialogflow and display the response
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IT Request Checklist</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    th, td {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    .btn {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>IT Request Checklist</h1>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Request 1: Upgrade RAM</td>
+        <td>Upgrade RAM on workstation.</td>
+        <td><button class="btn" onclick="processRequest('Upgrade RAM')">Submit Request</button></td>
+      </tr>
+      <tr>
+        <td>Request 2: Install Software</td>
+        <td>Install software XYZ on laptop.</td>
+        <td><button class="btn" onclick="processRequest('Install Software')">Submit Request</button></td>
+      </tr>
+      <tr>
+        <td>Request 3: VPN Access</td>
+        <td>Request access to VPN.</td>
+        <td><button class="btn" onclick="processRequest('VPN Access')">Submit Request</button></td>
+      </tr>
+      <tr>
+        <td>Request 4: JIRA/Confluence Access</td>
+        <td>Request access to JIRA and Confluence.</td>
+        <td><button class="btn" onclick="processRequest('JIRA/Confluence Access')">Submit Request</button></td>
+      </tr>
+      <tr>
+        <td>Request 5: GHE Access</td>
+        <td>Request access to GitHub Enterprise.</td>
+        <td><button class="btn" onclick="processRequest('GHE Access')">Submit Request</button></td>
+      </tr>
+      <tr>
+        <td>Request 6: Developer Tools Repository</td>
+        <td>Request access to the Developer Tools repository.</td>
+        <td><button class="btn" onclick="processRequest('Developer Tools Repository')">Submit Request</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<script>
+  function processRequest(requestTitle) {
+    // Add your code here to process the IT request, for example, send an API request to ServiceNow
+    // with the filled details.
+    alert("IT Request '" + requestTitle + "' has been submitted!");
+  }
+</script>
+
+</body>
+</html>

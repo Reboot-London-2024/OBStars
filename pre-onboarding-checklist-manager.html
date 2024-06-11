@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pre-Onboarding Manager</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    th, td {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    .btn {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- <div class="video-thumbnail">
+    <img src="charlie-nunn-watermarked.jpg" alt="Video Thumbnail" style="width:100%; height:auto;">
+  </div> -->
+
+<div class="container">
+  <h1>Pre-Onboarding (Hiring Manager)</h1>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Networking Event</td>
+        <td>Networking events provide an excellent chance to connect with the team and learn more about each other. It's an opportunity to build relationships and share insights. Come along to meet the team.</td>
+        <td><input type="checkbox" id="request1" value="Networking Event"></td>
+      </tr>
+      <tr>
+        <td>Mandatory Training</td>
+        <td>Discussed with colleague about mandatory training.</td>
+        <td><input type="checkbox" id="request2" value="Mandatory Training"></td>
+      </tr>
+      <tr>
+        <td>Induction Plan</td>
+        <td>Induction plan customised for new joiner.</td>
+        <td><input type="checkbox" id="request3" value="Induction Plan"></td>
+      </tr>
+      <tr>
+        <td>Buddy</td>
+        <td>Buddy assigned.</td>
+        <td><input type="checkbox" id="request4" value="Buddy"></td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn" onclick="submitRequests()">Submit</button>
+</div>
+
+</body>
+</html>

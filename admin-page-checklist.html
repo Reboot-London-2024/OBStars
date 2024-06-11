@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hiring Manager Admin Page</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="checklist.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Hiring Manager Admin Page</h2>
+    
+    <label for="team-member">Select Team Member:</label>
+    <select id="team-member" name="team_member">
+      <option value="john_doe">John Doe</option>
+      <option value="jane_smith">Jane Smith</option>
+      <option value="alice_jones">Alice Jones</option>
+      <option value="bob_brown">Bob Brown</option>
+    </select>
+    
+    <label for="team-role">Assign Role:</label>
+    <select id="team-role" name="team_role">
+      <option value="developer">Developer</option>
+      <option value="designer">Designer</option>
+      <option value="manager">Manager</option>
+      <option value="qa">QA</option>
+    </select>
+    
+    <ul class="checklist" id="checklist">
+      <!-- Default checklist items will be inserted here based on the selected role -->
+    </ul>
+    <button id="add-item">Add Checklist Item</button>
+  </div>
+
+  <script>
+    const checklist = document.getElementById('checklist');
+
+    const defaultChecklists = {
+      developer: [
+        'Setup Development Environment',
+        'Clone Repository',
+        'Read Project Documentation'
+      ],
+      designer: [
+        'Install Design Software',
+        'Review Design Guidelines',
+        'Access Design Resources'
+      ],
+      manager: [
+        'Meet with Team',
+        'Review Project Plan',
+        'Set Up Meetings'
+      ],
+      qa: [
+        'Set Up Testing Environment',
+        'Review Test Cases',
+        'Access Testing Tools'
+      ]
+    };
+
+    function loadDefaultChecklist(role) {
+      checklist.innerHTML = ''; // Clear current checklist
+      const items = defaultChecklists[role] || [];
+      items.forEach((item, index) => {
+        const listItem = document.createElement('li');
+
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.id = `default-item-${index}`;
+        checkbox.name = `default_item_${index}`;
+
+        const label = document.createElement('label');
+        label.htmlFor = checkbox.id;
+        label.textContent = item;
+
+        listItem.appendChild(checkbox);
+        listItem.appendChild(label);
+        checklist.appendChild(listItem);
+      });
+    }
+
+    document.getElementById('team-role').addEventListener('change', function() {
+      const selectedRole = this.value;
+      loadDefaultChecklist(selectedRole);
+    });
+
+    document.getElementById('add-item').addEventListener('click', function() {
+      const newItem = document.createElement('li');
+
+      const newCheckbox = document.createElement('input');
+      newCheckbox.type = 'checkbox';
+      newCheckbox.id = 'new-item-' + (checklist.children.length + 1);
+      newCheckbox.name = 'new_item_' + (checklist.children.length + 1);
+
+      const newLabel = document.createElement('label');
+      newLabel.htmlFor = newCheckbox.id;
+      newLabel.textContent = 'New Checklist Item ' + (checklist.children.length + 1);
+
+      newItem.appendChild(newCheckbox);
+      newItem.appendChild(newLabel);
+      checklist.appendChild(newItem);
+    });
+
+    // Load default checklist for the initially selected role
+    loadDefaultChecklist(document.getElementById('team-role').value);
+  </script>
+</body>
+</html>

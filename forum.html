@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forum</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+        }
+        .forum-post {
+            border: 1px solid #ccc;
+            background-color: #fff;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .forum-post h2 {
+            margin-top: 0;
+            margin-bottom: 5px;
+        }
+        .forum-post p {
+            margin-bottom: 5px;
+        }
+        .forum-post .timestamp {
+            font-size: 0.8em;
+            color: #888;
+        }
+        .reply-link {
+            color: #007bff;
+            cursor: pointer;
+        }
+        .reply-form {
+            display: none;
+            margin-top: 10px;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>New Starter Forum</h1>
+    </header>
+    <div class="container">
+        <form id="postForm">
+            <label for="username">Subject:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+            <input type="submit" value="Post">
+        </form>
+
+        <div id="forumPosts">
+            <!-- Forum posts will be dynamically added here -->
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("postForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var username = document.getElementById("username").value;
+            var message = document.getElementById("message").value;
+            var currentTime = new Date();
+            var timestamp = currentTime.toLocaleString();
+            var post = "<div class='forum-post'><h2>" + username + "</h2><p>" + message + "</p><p class='timestamp'>" + timestamp + "</p><a class='reply-link'>Reply</a><div class='reply-form'><label for='replyUsername'>Username:</label><input type='text' class='reply-username' required><label for='replyMessage'>Reply:</label><textarea class='reply-message' rows='2' required></textarea><input type='button' class='reply-submit' value='Post'></div></div>";
+            document.getElementById("forumPosts").insertAdjacentHTML('beforeend', post);
+            document.getElementById("postForm").reset();
+        });
+
+        document.addEventListener('click', function(event) {
+            if (event.target && event.target.className == 'reply-link') {
+                var replyForm = event.target.nextElementSibling;
+                if (replyForm.style.display === 'none') {
+                    replyForm.style.display = 'block';
+                } else {
+                    replyForm.style.display = 'none';
+                }
+            }
+            if (event.target && event.target.className == 'reply-submit') {
+                var replyForm = event.target.parentNode;
+                var replyUsername = replyForm.querySelector('.reply-username').value;
+                var replyMessage = replyForm.querySelector('.reply-message').value;
+                var currentTime = new Date();
+                var timestamp = currentTime.toLocaleString();
+                var replyPost = "<div class='forum-post'><h2>" + replyUsername + "</h2><p>" + replyMessage + "</p><p class='timestamp'>" + timestamp + "</p></div>";
+                event.target.parentNode.parentNode.insertAdjacentHTML('beforeend', replyPost);
+                replyForm.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
