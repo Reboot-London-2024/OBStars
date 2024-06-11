@@ -68,24 +68,33 @@
   </div>
 
   <script>
-    function sendMessage() {
-      var userInput = document.getElementById('user-input').value;
+    async function sendMessage() {
+      const userInput = document.getElementById('user-input').value;
       if (userInput.trim() === '') return;
-      
+
       appendMessage('user', userInput);
       document.getElementById('user-input').value = '';
-      
-      // Call a function to send the user message to the server and get the response
-      // For now, let's just simulate a bot response
-      setTimeout(function() {
-        var botResponse = 'This is a dummy response from the bot.';
-        appendMessage('bot', botResponse);
-      }, 500);
+
+      try {
+        const response = await fetch('http://localhost:5000/message', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ message: userInput }),
+        });
+
+        const data = await response.json();
+        appendMessage('bot', data.response);
+      } catch (error) {
+        console.error('Error:', error);
+        appendMessage('bot', 'Sorry, there was an error processing your request.');
+      }
     }
 
     function appendMessage(sender, message) {
-      var chatBox = document.getElementById('chat-box');
-      var messageElement = document.createElement('div');
+      const chatBox = document.getElementById('chat-box');
+      const messageElement = document.createElement('div');
       messageElement.classList.add(sender + '-message');
       messageElement.innerText = message;
       chatBox.appendChild(messageElement);
