@@ -7,35 +7,62 @@
   <style>
     body {
       font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9fafb;
     }
+
     .container {
       max-width: 800px;
-      margin: 0 auto;
+      margin: 20px auto;
       padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      box-sizing: border-box;
     }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
     table {
       width: 100%;
       border-collapse: collapse;
       margin-bottom: 20px;
     }
+
     th, td {
-      border: 1px solid #dddddd;
+      border: 1px solid #ddd;
       text-align: left;
       padding: 8px;
     }
+
     th {
       background-color: #f2f2f2;
     }
-    .btn {
-      background-color: #007bff;
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .navigation button {
+      background-color: #333;
       color: #fff;
-      border: none;
       padding: 10px 20px;
+      border: none;
+      border-radius: 3px;
       cursor: pointer;
+      transition: background-color 0.3s;
     }
-    .btn:hover {
-      background-color: #0056b3;
+
+    .navigation button:hover {
+      background-color: #555;
     }
+
     /* Modal styles */
     .modal {
       display: none; 
@@ -107,7 +134,11 @@
       </tr>
     </tbody>
   </table>
-  <button class="btn" onclick="window.location.href='onboarding-dashboard.html'">Submit</button>
+
+  <div class="navigation">
+    <button type="button" onclick="window.location.href='index.html'">Previous</button>
+    <button type="button" onclick="window.location.href='onboarding-dashboard.html'">Submit</button>
+  </div>
 </div>
 
 <!-- Modal for Image -->
@@ -144,10 +175,6 @@
     if (event.target == modal) {
       modal.style.display = "none";
     }
-  }
-
-  function submitRequests() {
-    // Your submit functionality here
   }
 </script>
 

@@ -3,12 +3,88 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document Check</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Colleague Vetting</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 600px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+
+    .document-list {
+      margin-bottom: 20px;
+    }
+
+    .document-card {
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .document-card h3 {
+      margin-top: 0;
+      font-size: 20px;
+    }
+
+    .document-card p {
+      margin: 10px 0;
+    }
+
+    input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      box-sizing: border-box;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .navigation button {
+      background-color: #333;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    .navigation button:hover {
+      background-color: #555;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
-    <h2>Document Checking</h2>
+    <h2>Colleague Vetting</h2>
     <div class="document-list">
       <div class="document-card">
         <h3>Right to Work</h3>
@@ -18,7 +94,7 @@
       <div class="document-card">
         <h3>Proof of Identity</h3>
         <p>Please upload a scanned copy of your passport, visa, or other government-issued ID along with a utility bill or bank statement as proof of address.</p>
-        <input type="file" id="proof-of-salary" name="proof_of_salary" accept=".pdf,.jpg,.jpeg,.png">
+        <input type="file" id="proof-of-identity" name="proof_of_identity" accept=".pdf,.jpg,.jpeg,.png">
       </div>
       <div class="document-card">
         <h3>Proof of Qualification</h3>
@@ -27,10 +103,9 @@
       </div>
     </div>
     <div class="navigation">
-      <button type="button" onclick="window.location.href='previous-page.html'">Previous</button>
+      <button type="button" onclick="window.location.href='index.html'">Previous</button>
       <button type="button" onclick="window.location.href='pre-onboarding-checklist.html'">Next</button>
     </div>
   </div>
-
-  </body>
+</body>
 </html>

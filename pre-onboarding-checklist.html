@@ -7,44 +7,80 @@
   <style>
     body {
       font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9fafb;
     }
+
     .container {
       max-width: 800px;
-      margin: 0 auto;
+      margin: 20px auto;
       padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      box-sizing: border-box;
     }
+
+    .video-thumbnail {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .video-thumbnail img {
+      width: 50%;
+      height: auto;
+      border-radius: 5px;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
     table {
       width: 100%;
       border-collapse: collapse;
       margin-bottom: 20px;
     }
+
     th, td {
-      border: 1px solid #dddddd;
+      border: 1px solid #ddd;
       text-align: left;
       padding: 8px;
     }
+
     th {
       background-color: #f2f2f2;
     }
-    .btn {
-      background-color: #007bff;
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .navigation button {
+      background-color: #333;
       color: #fff;
-      border: none;
       padding: 10px 20px;
+      border: none;
+      border-radius: 3px;
       cursor: pointer;
     }
-    .btn:hover {
-      background-color: #0056b3;
+
+    .navigation button:hover {
+      background-color: #555;
     }
   </style>
 </head>
 <body>
 
-  <div class="video-thumbnail">
-    <img src="charlie-nunn-watermarked.jpg" alt="Video Thumbnail" style="width:100%; height:auto;">
-  </div>
-
 <div class="container">
+  <div class="video-thumbnail">
+    <img src="charlie-nunn-watermarked.jpg" alt="Video Thumbnail">
+  </div>
   <h1>Pre-Onboarding (Colleague)</h1>
   
   <table>
@@ -59,16 +95,20 @@
       <tr>
         <td>Networking Event</td>
         <td>Networking events provide an excellent chance to connect with the team and learn more about each other. It's an opportunity to build relationships and share insights. Come along to meet the team.</td>
-        <td><input type="checkbox" id="request1" value="Upgrade RAM"></td>
+        <td><input type="checkbox" id="request1" value="Networking Event"></td>
       </tr>
       <tr>
         <td>Mandatory training</td>
         <td>Completed mandatory training.</td>
-        <td><input type="checkbox" id="request2" value="Install Software"></td>
+        <td><input type="checkbox" id="request2" value="Mandatory training"></td>
       </tr>
     </tbody>
   </table>
-  <button class="btn" onclick="window.location.href='onboarding-dashboard.html'">Submit</button>
+
+  <div class="navigation">
+    <button type="button" onclick="window.location.href='document-check.html'">Previous</button>
+    <button type="button" onclick="window.location.href='onboarding-dashboard.html'">Submit</button>
+  </div>
 </div>
 
 </body>
