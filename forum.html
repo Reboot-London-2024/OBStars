@@ -74,11 +74,17 @@
 </head>
 <body>
     <header>
-        <h1>New Starter Forum</h1>
+        <h1>Forum</h1>
     </header>
     <div class="container">
+        <form id="searchForm">
+            <label for="searchQuery">Search:</label>
+            <input type="text" id="searchQuery" name="searchQuery" placeholder="Enter search query">
+            <input type="submit" value="Search">
+        </form>
+
         <form id="postForm">
-            <label for="username">Subject:</label>
+            <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
             <label for="message">Message:</label>
             <textarea id="message" name="message" rows="4" required></textarea>
@@ -120,6 +126,22 @@
                 var replyPost = "<div class='forum-post'><h2>" + replyUsername + "</h2><p>" + replyMessage + "</p><p class='timestamp'>" + timestamp + "</p></div>";
                 event.target.parentNode.parentNode.insertAdjacentHTML('beforeend', replyPost);
                 replyForm.style.display = 'none';
+            }
+        });
+
+        document.getElementById("searchForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var searchQuery = document.getElementById("searchQuery").value.toLowerCase();
+            var posts = document.getElementsByClassName("forum-post");
+            for (var i = 0; i < posts.length; i++) {
+                var post = posts[i];
+                var username = post.getElementsByTagName("h2")[0].innerText.toLowerCase();
+                var message = post.getElementsByTagName("p")[0].innerText.toLowerCase();
+                if (username.indexOf(searchQuery) > -1 || message.indexOf(searchQuery) > -1) {
+                    post.style.display = "block";
+                } else {
+                    post.style.display = "none";
+                }
             }
         });
     </script>
