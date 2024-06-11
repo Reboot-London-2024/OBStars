@@ -4,12 +4,58 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bank Onboarding</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+  }
+  
+  .container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  h1 {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 15px;
+  }
+  
+  button {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  </style>
+  <!-- <link rel="stylesheet" href="style.css"> -->
 </head>
 <body>
   <div class="container">
     <header>
-      <img src="bank-logo.png" alt="Company Logo">  <h1>Welcome to Lloyds Banking Group Onboarding</h1>
+      <img src="bank-logo.png" alt="Company Logo">
+      <h1>Welcome to Lloyds Banking Group Onboarding</h1>
       <p>Hey there! Welcome to the LBG family! We're so glad you're here. Get ready to learn, grow, and achieve great things together.</p>
     </header>
     <form id="login-form">
@@ -19,13 +65,35 @@
       <input type="email" id="email" name="email" required>
       <label for="role">Role:</label>
       <select id="role" name="role" required>
-        <option value="engineer">Engineer</option>
-        <option value="business_manager">Business Manager</option>
+        <option value="">--Select a role--</option>
+        <option value="onboarding colleague">Onboarding Colleague</option>
+        <option value="hiring manager">Hiring Manager</option>
       </select>
       <button type="submit">Log In</button>
     </form>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    const loginForm = document.getElementById('login-form');
+
+    loginForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const role = document.getElementById('role').value;
+      
+      // Simulate form submission (replace with actual logic)
+      console.log(`Name: ${name}, Email: ${email}, Role: ${role}`);
+      
+      // Redirect to the appropriate page based on role
+      if (role === 'onboarding colleague') {
+        window.location.href = 'document-check.html';
+      } else if (role === 'hiring manager') {
+        window.location.href = 'pre-onboarding-checklist-manager.html';
+      } else {
+        console.log('Please select a valid role.');
+      }
+    });
+  </script>
 </body>
 </html>
